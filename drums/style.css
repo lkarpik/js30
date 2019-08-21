@@ -1,0 +1,39 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    font-size: 32;
+}
+
+.container {
+    margin-top: 20vh;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.key {
+    display: inline-block;
+    padding: 2rem;
+    margin: 1rem;
+    border: 1px white solid;
+    font-size: 2rem;
+    transition: all 400ms;
+}
+
+.playing {
+    transform: scale(1.2);
+    border: 1px yellow solid;
+    color: yellow;
+    box-shadow: 0 0 1rem 0.5rem yellow;
+}
+
+.key:hover {
+    transform: scale(1.2);
+    border: 1px yellow solid;
+    color: yellow;
+    box-shadow: 0 0 1rem 0.5rem yellow;
+}
