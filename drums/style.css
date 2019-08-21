@@ -21,17 +21,10 @@ h1 {
     margin: 1rem;
     border: 1px white solid;
     font-size: 2rem;
-    transition: all 400ms;
+    transition: all 100ms;
 }
 
 .playing {
-    transform: scale(1.2);
-    border: 1px yellow solid;
-    color: yellow;
-    box-shadow: 0 0 1rem 0.5rem yellow;
-}
-
-.key:hover {
     transform: scale(1.2);
     border: 1px yellow solid;
     color: yellow;
