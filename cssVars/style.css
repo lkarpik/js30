@@ -1,0 +1,28 @@
+:root {
+    --blur: 0px;
+    --color: #ffffff;
+    --spacing: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(93, 81, 81);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+input {
+    margin: 2rem;
+}
+
+img {
+    padding: var(--spacing);
+    background: var(--color);
+    filter: blur(var(--blur));
+    max-height: 300px;
+}
+
+.color {
+    color: var(--color);
+}
