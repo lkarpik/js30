@@ -1,4 +1,5 @@
 const inputs = document.querySelectorAll(".container input");
+const content = document.querySelector(".content");
 
 inputs.forEach(input => {
     input.addEventListener("mousemove", changeValue);
