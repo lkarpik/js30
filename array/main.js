@@ -138,14 +138,39 @@ console.log(inventors);
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-let dataF = fetch('https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris', {
-    mode: 'no-cors'
-}).then(val => {
-    console.log(val);
-});
+// let dataF = fetch('https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris', {
+//     mode: 'no-cors'
+// }).then(val => {
+//     console.log(val);
+// });
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+
+console.log(people);
+console.log(typeof people);
+const sortedA = people.sort((a, b) => {
+    console.log(typeof people)
+    const partsA = a.split(", ");
+    const partsB = b.split(", ");
+
+    return partsA > partsB ? -1 : 1
+
+});
+console.log(sortedA);
+
+
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+const reduced = data.reduce((prev, curr) => {
+    console.log("Prev", prev);
+    console.log("Curr ", curr);
+    if (!prev[curr]) {
+        prev[curr] = 0;
+    }
+    prev[curr]++;
+    return prev;
+
+}, {});
+console.log(reduced);
