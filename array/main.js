@@ -133,7 +133,7 @@ inventors.sort((a, b) => {
     return (b.passed - b.year) - (a.passed - a.year);
 });
 
-console.log(inventors);
+// console.log(inventors);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -147,17 +147,17 @@ console.log(inventors);
 // 7. sort Exercise
 // Sort the people alphabetically by last name
 
-console.log(people);
-console.log(typeof people);
+// console.log(people);
+// console.log(typeof people);
 const sortedA = people.sort((a, b) => {
-    console.log(typeof people)
+    // console.log(typeof people)
     const partsA = a.split(", ");
     const partsB = b.split(", ");
 
     return partsA > partsB ? -1 : 1
 
 });
-console.log(sortedA);
+// console.log(sortedA);
 
 
 // 8. Reduce Exercise
@@ -174,3 +174,13 @@ const reduced = data.reduce((prev, curr) => {
 
 }, {});
 console.log(reduced);
+
+
+const data2 = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+
+const newData2 = data2.reduce((prev, curr) => {
+
+    return curr.length + prev;
+
+}, 0)
+console.log("newData", newData2);
