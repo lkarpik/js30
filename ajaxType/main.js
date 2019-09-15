@@ -35,7 +35,3 @@ function search(cities, value) {
     }).join(" ");
     domItems.suggestions.innerHTML = htmlSuggestions;
 };
-
-function toDecimals(digit) {
-
-}

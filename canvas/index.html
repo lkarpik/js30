@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas sytle</title>
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="draw" width="800" height="800"></canvas>
+</body>
+
+<script>
+    const canvas = document.querySelector("#draw");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+
+    ctx.lineWidth = 1;
+
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+    let hue = 0;
+    let directtion = true;
+
+    function draw(e) {
+        if (e.which === 1) {
+            isDrawing = true;
+            ctx.strokeStyle = `hsl(${hue},100%,50%)`;
+
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+
+            lastX = e.offsetX;
+            lastY = e.offsetY;
+
+            hue++
+            if (hue >= 360) {
+                hue = 0;
+            }
+
+            if (ctx.lineWidth >= 10 || ctx.lineWidth <= 1) {
+                directtion = !directtion;
+            }
+            if (directtion) {
+                ctx.lineWidth++;
+            } else {
+                ctx.lineWidth--;
+            }
+
+            console.log(ctx.lineWidth);
+        } else {
+            isDrawing = false;
+            ctx.lineWidth = 1;
+            return
+        }
+
+    }
+
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mousedown", (e) => {
+        lastX = e.offsetX;
+        lastY = e.offsetY;
+    })
+</script>
+
+</html>
