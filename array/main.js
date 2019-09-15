@@ -184,3 +184,16 @@ const newData2 = data2.reduce((prev, curr) => {
 
 }, 0)
 console.log("newData", newData2);
+
+console.time("Checking inventors");
+inventors.forEach(inv => {
+
+    console.groupCollapsed(inv.last);
+    console.log(`${inv.last} is the best ${inv.year}`);
+    console.log(`${inv.last} died in ${inv.passed}`);
+    console.groupEnd(inv.last);
+
+});
+console.timeEnd("Checking inventors");
+
+console.table(inventors);

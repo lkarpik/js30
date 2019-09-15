@@ -1,9 +1,9 @@
 {
-    const domElemtnts = {
+    const domElements = {
         panels: document.querySelectorAll(".panel")
     };
 
-    // domElemtnts.panels.forEach(panel => {
+    // domElements.panels.forEach(panel => {
     //     panel.addEventListener("click", (e) => {
     //         panel.classList.toggle("active");
     //     });
@@ -20,10 +20,10 @@
 
     }
 
-    domElemtnts.panels.forEach(panel => {
+    domElements.panels.forEach(panel => {
         panel.addEventListener("click", active);
     });
-    domElemtnts.panels.forEach(panel => {
+    domElements.panels.forEach(panel => {
         panel.addEventListener("transitionend", open);
     });
 }
