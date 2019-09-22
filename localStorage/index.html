@@ -129,12 +129,29 @@
         }
 
         function markDone(e) {
+            console.log(e.target);
             if (e.target.matches("input")) {
                 let index = parseInt(e.target.id);
                 items[index].done = !items[index].done;
                 localStorage.setItem("items", JSON.stringify(items));
                 populateList(items, plates);
             };
+        }
+
+        function checkAll() {
+            items.forEach(item => {
+                item.done = true;
+            });
+            localStorage.setItem("items", JSON.stringify(items));
+            populateList(items, plates);
+        }
+
+        function uncheckAll() {
+            items.forEach(item => {
+                item.done = false;
+            });
+            localStorage.setItem("items", JSON.stringify(items));
+            populateList(items, plates);
         }
 
         form.addEventListener("submit", addItem);
