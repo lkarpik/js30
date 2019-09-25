@@ -63,25 +63,40 @@
         // console.log(sortedBands);
 
 
+        // const list = document.querySelector("ul");
+
+        // function strip(band) {
+        //     return band.replace(/^(a |an |the )/i, '');
+        // }
+
+        // bands.sort((a, b) => {
+        //     return strip(a) > strip(b) ? 1 : -1;
+        // });
+
+        // const inner = bands.map(band => {
+        //     return `<li>${band}</li>`
+        // });
+
+        // list.innerHTML = inner;
+
+        // bands.sort((a, b) => {
+        //     return a > b ? 1 : -1;
+        // });
+
         const list = document.querySelector("ul");
+        bands[0].replace('The', '').trim();
 
         function strip(band) {
-            return band.replace(/^(a |an |the )/i, '');
+            return band.replace(/^(the |an |a )/i, '').trim();
         }
 
-        bands.sort((a, b) => {
-            return strip(a) > strip(b) ? 1 : -1;
+        const innerText = bands.sort((a, b) => {
+            return strip(a) < strip(b) ? 1 : -1;
+        }).map(band => {
+            return `<li>${band}</li>`;
         });
 
-        const inner = bands.map(band => {
-            return `<li>${band}</li>`
-        });
-
-        list.innerHTML = inner;
-
-        bands.sort((a, b) => {
-            return a > b ? 1 : -1;
-        });
+        list.innerHTML = innerText;
     </script>
 
 </body>
