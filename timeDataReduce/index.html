@@ -179,38 +179,56 @@
         <li data-time="1:56">
             Video 57
         </li>
-        <li data-time="4:04">
+        <li data-time="5:02">
             Video 58
         </li>
     </ul>
     <script>
-        const items = document.querySelectorAll('li');
+        // const items = document.querySelectorAll('li');
 
-        const itemsTime = Array.from(items).reduce((acc, curr) => {
-            return acc + countSeconds(curr.dataset.time);
-        }, 0);
+        // const itemsTime = Array.from(items).reduce((acc, curr) => {
+        //     return acc + countSeconds(curr.dataset.time);
+        // }, 0);
 
-        console.log(formatTime(itemsTime));
+        // console.log(formatTime(itemsTime));
 
-        function countSeconds(timeData) {
-            // typeof timeData === "string" ? console.log("string") : console.log(typeof timeData);
-            const timeArray = timeData.split(':');
-            let seconds = 0;
-            if (timeArray.length === 2) {
-                seconds = parseInt(timeArray[0]) * 60 + parseInt(timeArray[1]);
-                return parseInt(seconds);
-            } else {
-                console.log("Hours are not supported");
-            }
-        }
+        // function countSeconds(timeData) {
+        //     // typeof timeData === "string" ? console.log("string") : console.log(typeof timeData);
+        //     const timeArray = timeData.split(':');
+        //     let seconds = 0;
+        //     if (timeArray.length === 2) {
+        //         seconds = parseInt(timeArray[0]) * 60 + parseInt(timeArray[1]);
+        //         return parseInt(seconds);
+        //     } else {
+        //         console.log("Hours are not supported");
+        //     }
+        // }
+
+        // function formatTime(seconds) {
+        //     let hours = Math.floor(seconds / 3600);
+        //     let minutes = Math.floor(seconds % 3600 / 60);
+        //     let sec = Math.floor(seconds % 3600 % 60);
+
+        //     return `${hours}:${minutes}:${sec}`;
+        // }
+
+        const timeItems = Array.from(document.querySelectorAll('li'));
+
+        let seconds = timeItems.map(item => item.dataset.time).map(timeString => {
+            const [min, sec] = timeString.split(':').map(parseFloat);
+            return min * 60 + sec;
+        }).reduce((acc, curr) => {
+            return acc + curr;
+        });
 
         function formatTime(seconds) {
             let hours = Math.floor(seconds / 3600);
             let minutes = Math.floor(seconds % 3600 / 60);
             let sec = Math.floor(seconds % 3600 % 60);
-
             return `${hours}:${minutes}:${sec}`;
         }
+
+        console.log(formatTime(seconds));
     </script>
 </body>
 
