@@ -8,10 +8,10 @@
 
 <body>
     <ul class="videos">
-        <li data-time="5:43">
+        <li data-time="1:30">
             Video 1
         </li>
-        <li data-time="2:33">
+        <li data-time="5:30">
             Video 2
         </li>
         <li data-time="3:45">
@@ -189,18 +189,18 @@
         const itemsTime = Array.from(items).reduce((acc, curr) => {
             return acc + countSeconds(curr.dataset.time);
         }, 0);
+
         console.log(formatTime(itemsTime));
 
         function countSeconds(timeData) {
             // typeof timeData === "string" ? console.log("string") : console.log(typeof timeData);
-
-            const timeArray = items[0].dataset.time.split(':');
+            const timeArray = timeData.split(':');
             let seconds = 0;
             if (timeArray.length === 2) {
                 seconds = parseInt(timeArray[0]) * 60 + parseInt(timeArray[1]);
                 return parseInt(seconds);
             } else {
-                console.log("Hours are not supported")
+                console.log("Hours are not supported");
             }
         }
 
