@@ -186,8 +186,30 @@
     <script>
         const items = document.querySelectorAll('li');
 
-        function formatTime(timeData) {
-            typeof timeData === "string" ? console.log("string") : console.log(typeof timeData);
+        const itemsTime = Array.from(items).reduce((acc, curr) => {
+            return acc + countSeconds(curr.dataset.time);
+        }, 0);
+        console.log(formatTime(itemsTime));
+
+        function countSeconds(timeData) {
+            // typeof timeData === "string" ? console.log("string") : console.log(typeof timeData);
+
+            const timeArray = items[0].dataset.time.split(':');
+            let seconds = 0;
+            if (timeArray.length === 2) {
+                seconds = parseInt(timeArray[0]) * 60 + parseInt(timeArray[1]);
+                return parseInt(seconds);
+            } else {
+                console.log("Hours are not supported")
+            }
+        }
+
+        function formatTime(seconds) {
+            let hours = Math.floor(seconds / 3600);
+            let minutes = Math.floor(seconds % 3600 / 60);
+            let sec = Math.floor(seconds % 3600 % 60);
+
+            return `${hours}:${minutes}:${sec}`;
         }
     </script>
 </body>
