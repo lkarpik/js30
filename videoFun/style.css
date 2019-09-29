@@ -13,6 +13,12 @@ html {
     background: #ffc600;
 }
 
+h1 {
+    color: greenyellow;
+    text-align: center;
+    font-size: 3rem;
+}
+
 .photobooth {
     background: white;
     max-width: 150rem;
@@ -28,7 +34,7 @@ html {
 }
 
 .photo {
-    width: 100%;
+    width: 70%;
     float: left;
 }
 
