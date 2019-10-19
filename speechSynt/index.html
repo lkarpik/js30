@@ -11,10 +11,35 @@
     body {
         margin: 0;
         box-sizing: border-box;
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        background-color: darkgray;
     }
 
     input {
         display: block;
+        width: 80%;
+        margin: 1rem auto;
+    }
+
+    select {
+        margin-bottom: 1rem;
+        width: 40%;
+
+    }
+
+    button {
+        width: 40%;
+
+    }
+
+    .container {
+        padding-bottom: 1rem;
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+        background-color: rgba(193, 136, 66, 0.721)
     }
 </style>
 
@@ -27,11 +52,16 @@
         </select>
         <div class="ranges">
             <label for="pitch">Pitch</label>
-            <input type="range" name="pitch" id="pitch">
+            <input type="range" name="pitch" id="pitch" min="0" max="2" step="0.2">
             <label for="speed">Speed</label>
-            <input type="range" name="Speed" id="Speed">
+            <input type="range" name="speed" id="speed" min="0" max="2" step="0.2">
         </div>
+        <textarea name="textArea" id="textArea" cols="30" rows="5"></textarea>
+        <button class="play">Play</button>
+        <button class="stop">Stop</button>
+
     </div>
 </body>
+<script src="main.js"></script>
 
 </html>
