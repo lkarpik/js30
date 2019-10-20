@@ -26,30 +26,29 @@ const domEl = {
             textValue: this.textArea.value
         }
     }
-}
+};
 
 // Synth
 
 const synth = {
-    lang: ``,
+    lang: `pl`,
     synth: window.speechSynthesis,
+    msg: new SpeechSynthesisUtterance(),
     getVoices: function () {
         if (this.lang === ``) {
             return this.synth.getVoices();
         }
-        return this.synth.getVoices().filter(voice => voice.lang === this.lang)
+        return this.synth.getVoices().filter(voice => voice.lang.includes(this.lang));
     },
     playSynth: function (voices, values) {
-        const utterThis = new SpeechSynthesisUtterance(values.textValue);
-        utterThis.voice = voices[values.voiceIndex];
-
-        utterThis.pitch = values.pitchValue;
-        utterThis.rate = values.speedValue;
-        this.synth.speak(utterThis);
-        console.log(utterThis);
-    },
-    changeValues: function (values) {
-
+        console.log(values);
+        this.synth.cancel();
+        this.msg.text = values.textValue;
+        this.msg.voice = voices[values.voiceIndex];
+        this.msg.pitch = values.pitchValue;
+        this.msg.rate = values.speedValue;
+        this.synth.speak(this.msg);
+        console.log(this.msg);
     },
     stopSynth: function () {
         this.synth.cancel();
@@ -60,6 +59,7 @@ const synth = {
 
 const controller = ((domEl, synth) => {
     let voices = [];
+
     // Get voices and populate ui
     synth.synth.addEventListener('voiceschanged', () => {
         voices = synth.getVoices();
@@ -75,15 +75,17 @@ const controller = ((domEl, synth) => {
         synth.playSynth(voices, domEl.getValues());
     });
 
-    domEl.stop.addEventListener(`click`, () => {
-        console.log(synth.synth);
-        synth.stopSynth();
-        domEl.textArea.value = ``;
+    domEl.speed.addEventListener('change', () => {
+        synth.playSynth(voices, domEl.getValues());
+    });
+    domEl.pitch.addEventListener('change', () => {
+        synth.playSynth(voices, domEl.getValues());
     });
 
-    domEl.speed.addEventListener('mousemove', (e) => {
+    domEl.stop.addEventListener(`click`, () => {
 
-        // how to change values on the fly?
-    })
+        synth.stopSynth();
+        // domEl.textArea.value = ``;
+    });
 
 })(domEl, synth);
